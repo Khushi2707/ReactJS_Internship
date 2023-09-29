@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>COVID-19 India Data</h1>
+    <input type="text" id="inputDate" placeholder="Enter date (dd-mm-yyyy)">
+    <button onclick="load()">Submit</button>
+    <p id="msg"></p>
+
+    <table class="table table-striped" id="dataTable">
+        <tr>
+        
+        </tr>
+    </table>
+
+    <script>
+        async function load() {
+            const inputDate = document.getElementById('inputDate').value;
+            const outputTableElement = document.getElementById('msg');
+            const dataTable = document.getElementById('dataTable');
+
+            if (!inputDate) {
+                outputTableElement.innerText = "Please enter a date instead of table.";
+                return;
+            }
+
+            var url = "https://data.covid19india.org/data.json";
+            var myobject = await (await fetch(url)).json();
+
+            const casesData = myobject.cases_time_series; // Corrected property access
+            let dateFound = false;
+
+            for (let i = 0; i < casesData.length; i++) {
+                if (casesData[i].date === inputDate) {
+                    dateFound = true;
+                    outputTableElement.innerText = "";
+
+                    dataTable.innerHTML = `
+                       
+                        <tr>
+                            <td>New Cases</td>
+                            <td>${casesData[i].dailyconfirmed}</td>
+                        </tr>
+                        <tr>
+                            <td>New Deaths</td>
+                            <td>${casesData[i].dailydeceased}</td>
+                        </tr>
+                    `;
+                    break;
+                }
+            }
+
+            if (!dateFound) {
+                outputTableElement.innerText = "Date not found instead of table.";
+            }
+        }
+    </script>
+</body>
+</html>

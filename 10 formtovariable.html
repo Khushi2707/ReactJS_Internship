@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        function check(form){
+            var name = form.uname.value;
+            var surname = form.usurname.value;
+            alert("user name is "+name+" user surname is "+surname);
+        } 
+    </script>
+    <form>
+      
+        <div class="mb-3">
+            <label for="form1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="form1" name="uname" placeholder="First Name">
+          </div>
+          <div class="mb-3">
+            <label for="form2" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="form2" name="usurname" placeholder="Last Name">
+          </div>
+        <input type="submit" onclick="check(this.form);">
+    </form>
+</body>
+</html>
+

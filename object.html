@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        const person = {
+            firstName: 'Khushi',
+            lastName: 'Modi',
+            age: 20,
+            isStudent: false,
+            address: {
+                street: 'XYZ',
+                city: 'Mehsana',
+                zipCode: '384002'
+            },
+            sayHello: function() {
+                document.write(`Hello, my name is ${this.firstName} ${this.lastName}.`);
+            }
+        };
+        
+        document.write(person.firstName + "<br/>"); 
+        document.write(person.age + "<br/>"); 
+        document.write(person.address.city + "<br/>"); 
+        person.sayHello(); 
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Booking</title>
+</head>
+<body>
+    <h1>Welcome to Event Ticket Booking</h1>
+    <button onclick="bookTicket()">Book a Ticket</button>
+
+    <script>
+        function bookTicket() {
+            // Prompt user for ticket quantity
+            const ticketQuantity = parseInt(prompt('How many tickets would you like to book?'));
+
+            // Validate input
+            if (!isNaN(ticketQuantity) && ticketQuantity > 0) {
+                // Calculate total price
+                const ticketPrice = 20; // Example ticket price
+                const totalPrice = ticketQuantity * ticketPrice;
+
+                // Confirm booking
+                const confirmation = confirm(`You are booking ${ticketQuantity} ticket(s) for a total of RS.${totalPrice}. Confirm?`);
+
+                if (confirmation) {
+                    alert('Tickets booked successfully! Thank you for your purchase.');
+                } else {
+                    alert('Booking cancelled.');
+                }
+            } else {
+                alert('Invalid input. Please enter a valid number of tickets.');
+            }
+        }
+    </script>
+</body>
+</html>

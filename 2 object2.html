@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        var myobject = {"gujarat":"ahmedabad","maharastra":"mumbai","rajsthan":"jaipur"};
+
+        for(var i in myobject){
+            document.write(i+"<br>");
+        }
+
+        //print values
+        for(var i in myobject){
+            document.write(myobject[1]+"<br>");
+        }
+
+        //print both
+        for(var i in myobject){
+            document.write("state is "+i+" city is " +myobject[1]+"<br>");
+        }
+
+        var cases = {"ahmedabad":[1500,1600,2], "rajkot":[500,600,1], "vapi":[100,50,0]};
+        for(var i in cases){
+            document.write (i+ "new cases :" + cases[i][0] + ", " + "recorded cases :" +  cases[i][1] + ", " + "death cases :" + cases[i][2] +"<br>");
+        }
+        //display above data in table
+    </script>
+
+        <table border="1" width="100%" class ="table">
+            <tr>
+                <th>City Name</th>
+                <th>New Cases</th>
+                <th>Recovered Cases</th>
+                <th>Death Cases</th>
+            </tr>
+            <script>
+                for(var i in cases){
+                    document.write("<tr><td>"+i+"</td><td>"+cases[i][0]+"</td><td>"+cases[i][1]+"</td><td>"+cases[i][2]+"</td><td>")
+                }
+            </script>
+        </table>
+
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        var mydata = {};
+        document.write(mydata);
+        document.write("<br>");
+        var mydata1 = {"gujarat":"ahmedabad"};
+        document.write(mydata1["gujarat"]+"<br>");
+
+        var mydata2 = {"ahmedabad":100, "surat":150, "vadodara":75};
+        document.write(mydata2["vadodara"]+"<br>");
+
+        var mydata3 = {"ahmedabad":100, "surat":[150,200,1], "vadodara":75};
+        //print 200
+        document.write(mydata3["surat"][1]+"<br>");
+
+        var mydata4 = {"ahmedabad":[{"date":"25 july","cases":210},
+                                    {"date":"25 july","cases":210},
+                                    {"date":"25 july","cases":210}],
+                        "surat":[150,200,1],
+                        "vadodara":75};
+        //print 220
+        document.write(mydata4["ahmedabad"][1]+"cases");
+
+    </script>
+    
+</body>
+</html>

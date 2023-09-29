@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Data to Table</title>
+</head>
+<body>
+    <script>
+        function showdata(form){
+            var name = form.uname.value;
+            var password = form.upassword.value;
+            var city = form.ucity.value;
+
+            if(name=="" || password=="" || city==""){
+                document.getElementById("msg").innerHTML = "Fields can not be blank";
+            }
+            else{
+                document.getElementById("msg").innerHTML = "<table border='1' width='500px'><tr><td>Name: </td><td>" +name+ "</td></tr><tr><td>Password: </td><td>" +password+ "</td></tr><tr><td>City : </td><td>" +city+ "</td></tr></table>";
+            }
+        }
+    </script>
+
+    <form>
+        <div>
+            <label for="form1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="form1" name="uname" placeholder="Name">
+        </div>
+        <br>
+        <div>
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="upassword" id="Password" placeholder="Password">
+        </div>
+        <br>
+        <select class="form-select" name="ucity">
+            <option selected>City</option>
+            <option value="ADI">Ahmedabad</option>
+            <option value="MEH">Mehsana</option>
+            <option value="RAJ">Rajkot</option>
+        </select>
+        <br>
+        <div>
+            <button type="submit" class="btn btn-primary" onclick="showdata(this.form); return false;">Submit</button>
+        </div>
+
+    </form>
+    <p id="msg"></p>
+</body>
+</html>
+
+
+

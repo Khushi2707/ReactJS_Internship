@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<body>
+    <script>
+
+        //basic array concepts
+        var mydata = [10,20,30,40,50,60];
+        document.write(mydata+"<br>");
+        document.write(mydata+"<br>");
+        document.write(mydata[0]+"<br>");
+        document.write(mydata[3]+"<br>");
+        document.write(mydata[-3]+"<br>");
+        document.write("Total number of elements : ",mydata.length+"<br>");
+  
+        //add the data at the end
+        mydata.push(70);
+        document.write(mydata);
+
+        var emails = ["abc.com", "xyz.com", "pqr.com"];
+        var password = ["abc123", "xyz123", "pqr123"];
+
+        function login(form){
+            var useremail = form.uemail.value;
+            var userpassword = form.upassword.value;
+            if(useremail=="" || userpassword==""){
+                if(useremail=="" && userpassword !=""){
+                    document.getElementById("msg").innerHTML = "Email Field can not be blank";
+                }
+                else if(useremail !="" && userpassword==""){
+                    document.getElementById("msg").innerHTML = "Password Field can not be blank";
+                }
+                else{
+                    document.getElementById("msg").innerHTML = "both Fields are required.";
+                }
+            }
+            else{
+                for(var i=0; i<emails.length; i++){
+                    if(useremail==emails[i] && userpassword==password[i]){
+                        document.getElementById("msg").innerHTML = "<font style='color:green'>Login Successful</font>";
+                            break;
+                    }
+                    else{
+                            document.getElementById("msg").innerHTML = "<font style='color:red'>Invalid username or password</font>";
+                    }
+                }
+            }
+        }
+    </script>
+    <form>
+        Email : <input type="email" name="uemail"><br>
+        Password : <input type="password" name="upassword"><br>
+        <input type="submit" onclick="login(this.form); return false;">
+    </form>
+    <p id="msg"></p>
+</body>
+</html>

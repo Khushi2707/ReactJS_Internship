@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        async function load(){
+            let url = "https://data.covid19india.org/data.json";
+            let myobject = await (await fetch(url)).json();
+            var days=0;
+            document.write(myobject["cases_time_series"][0]["date"]+"<br>");
+            document.write("Total number of days: "+myobject["cases_time_series"].length);
+
+            document.write("<table border='1' width='100%'>");
+                for(var i=0; i<myobject["cases_time_series"].length;i++){
+                    if(myobject["cases_time_series"][i]["dailyconfirmed"]>=100000){
+                        //add style
+                        document.write("<tr style= 'color: red'><td>"+myobject["cases_time_series"][i]["date"]+
+                            "</td><td>"+myobject["cases_time_series"][i]["dailyconfirmed"]+
+                                "</td><td>"+myobject["cases_time_series"][i]["dailydeceased"]+
+                                    "</td><td>"+myobject["cases_time_series"][i] ["dailyrecovered"]+"</td></tr>");
+
+                        days = days + 1;
+                    }
+                    else{
+                        document.write("<tr><td>"+myobject["cases_time_series"][i]["date"]+
+                            "</td><td>"+myobject["cases_time_series"][i]["dailyconfirmed"]+
+                                "</td><td>"+myobject["cases_time_series"][i]["dailydeceased"]+
+                                    "</td><td>"+myobject["cases_time_series"][i]["dailyrecovered"]
+                                        +"</td></tr>");
+                    }
+                }
+                document.write("</table>");
+                document.write("Total number of days with more than 1 lac cases :" +days);
+            }
+            load();
+    </script>
+</body>
+</html>

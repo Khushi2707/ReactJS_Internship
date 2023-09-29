@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        function check(form){
+            var uname = form.dt.value;
+
+            async function load(){
+                let url = "";
+                let obj = await (await fetch(url)).json();
+                for(var i=0; i<obj["cases_time_series"].length; i++){
+                    if(uname==obj["cases_time_series"][i]["date"]){
+                        document.getElementById("msg").innerHTML ="<table border='1' width='500px'><tr><td>New Cases</td><td>"+obj["cases_time_series"][i]["dailyconfirmed"]+ "</td></tr><tr><td>New Deaths</td><td>" +obj["cases_time_series"][i]["dailydeceased"]+"</td></tr></table>";
+                        break;
+                    }
+                }
+            }
+            load();
+        }
+    </script>
+    <form>
+        Date : <input type="text" name="dt">
+        <input type="submit" onclick="check(this.form); return false;">
+    </form>
+    <p id="msg"></p>
+</body>
+</html>
